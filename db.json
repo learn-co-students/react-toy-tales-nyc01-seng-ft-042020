@@ -40,13 +40,23 @@
       "id": 7,
       "name": "Hamm",
       "image": "https://cdn140.picsart.com/244090226021212.png?r1024x1024",
-      "likes": 0
+      "likes": 1
     },
     {
       "id": 8,
       "name": "Little Green Men",
       "image": "http://www.pngmart.com/files/3/Toy-Story-Alien-PNG-File.png",
-      "likes": -2
+      "likes": -1
+    },
+    {
+      "name": "Slinky",
+      "image": "https://cdn.shopify.com/s/files/1/0049/3732/products/13_900x.jpg?v=1334937067",
+      "id": 9
+    },
+    {
+      "name": "Slinky",
+      "image": "https://cdn.shopify.com/s/files/1/0049/3732/products/13_900x.jpg?v=1334937067",
+      "id": 11
     }
   ]
 }
