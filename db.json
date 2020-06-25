@@ -13,12 +13,6 @@
       "likes": 8
     },
     {
-      "id": 3,
-      "name": "Mr. Potato Head",
-      "image": "https://vignette.wikia.nocookie.net/universe-of-smash-bros-lawl/images/d/d8/Mr-potato-head-toy-story.gif/revision/latest?cb=20151129131217",
-      "likes": 3
-    },
-    {
       "id": 4,
       "name": "Slinky Dog",
       "image": "https://www.freeiconspng.com/uploads/slinky-png-transparent-1.png",
@@ -35,6 +29,12 @@
       "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRwahjQI9vmRDZh5OwXvuU07UW_Y71xa948wVNbTFo3F5eEDSI58GN48L1kCJ7UybyF9YbdkJW_&usqp=CAc",
       "likes": 8,
       "id": 6
+    },
+    {
+      "name": "The Flash",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRfoeTkZmZEZ_Jcd_3hAA-9jk5MDTH16nbZ34VAJsoqdLTAMFkXb38o4Ed4ieTa-1pgsUVc11U&usqp=CAc",
+      "likes": 3,
+      "id": 7
     }
   ]
 }
