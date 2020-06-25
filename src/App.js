@@ -48,6 +48,10 @@ deleteToy = (passedInToyId)=> {
 let copyOfList = this.state.toyList.filter((toy)=>{
   return toy.id !== passedInToyId
 })
+
+this.setState({
+  toyList: copyOfList
+})
 }
 
   //use component did mount to fetch and render component
