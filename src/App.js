@@ -5,13 +5,22 @@ import Header from './components/Header'
 import ToyForm from './components/ToyForm'
 import ToyContainer from './components/ToyContainer'
 
-import data from './data'
-
 
 class App extends React.Component{
 
   state = {
+    toyList: [],
     display: false
+  }
+
+  componentDidMount(){
+    fetch("http://localhost:3000/toys")
+    .then(r => r.json())
+    .then((toys => {
+      this.setState({
+        toyList: toys
+      })
+    }))
   }
 
   handleClick = () => {
@@ -20,6 +29,41 @@ class App extends React.Component{
       display: newBoolean
     })
   }
+  
+  addNewToy = (newToyInstance) => {
+    let updatedArray = [...this.state.toyList, newToyInstance]
+    this.setState({
+      toyList: updatedArray
+    })
+  }
+
+  deleteToy = (deletedToyId) => {
+    let updatedArray = this.state.toyList.filter((toyPOJO) => {
+      if(toyPOJO.id !== deletedToyId){
+        return toyPOJO
+      }
+    })
+    this.setState({
+      toyList: updatedArray
+    })
+  }
+
+  updateToy = (updatedToy) => {
+    let updatedArray = this.state.toyList.map((toyPOJO) => {
+      if(toyPOJO.id === updatedToy.id){
+        return updatedToy
+      } else {
+        return toyPOJO
+      }
+    })
+    this.setState({
+      toyList: updatedArray
+    })
+  }
+
+  renderToyList = () => {
+    return this.state.toyList
+  }
 
   render(){
     return (
@@ -27,14 +71,20 @@ class App extends React.Component{
         <Header/>
         { this.state.display
             ?
-          <ToyForm/>
+          <ToyForm
+            addNewToy={this.addNewToy}
+          />
             :
           null
         }
         <div className="buttonContainer">
           <button onClick={this.handleClick}> Add a Toy </button>
         </div>
-        <ToyContainer/>
+        <ToyContainer
+          toys={this.renderToyList()}
+          deleteToy={this.deleteToy}
+          updateToy={this.updateToy}
+        />
       </>
     );
   }
