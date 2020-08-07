@@ -6,9 +6,9 @@ class ToyCard extends Component {
   }
 
   handleLike = (e) => {
-    this.props.increaseLikes(this.props.toy)
+    this.props.increaseLikes(this.props.toy) 
   }
-  
+
   render() {
     return (
       <div className="card">

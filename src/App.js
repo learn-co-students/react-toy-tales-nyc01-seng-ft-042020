@@ -4,14 +4,14 @@ import './App.css';
 import Header from './components/Header'
 import ToyForm from './components/ToyForm'
 import ToyContainer from './components/ToyContainer'
-const baseUrl = "http://localhost:3000/toys" 
-// import data from './data'
 
+// import data from './data'
+const baseUrl = "http://localhost:3000/toys"
 
 class App extends React.Component{
 
   state = {
-    display: false, 
+    display: false,
     toys: []
   }
 
@@ -20,66 +20,70 @@ class App extends React.Component{
     this.setState({
       display: newBoolean
     })
-  } 
+  }
 
-  componentDidMount=()=>{
+  componentDidMount() {
+    this.fetchToys() 
+  }
+
+  fetchToys = () => {
     fetch(baseUrl) 
       .then(res => res.json()) 
       .then(json => this.setState({toys: json})) 
-  } 
+  }
 
-  addNewToy=(toy)=> {
+  addNewToy = (toy) => {
     fetch(baseUrl, {
-      method: "POST", 
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json"
       },
       body: JSON.stringify(toy) 
-    }) 
-    .then(res => res.json()) 
+    })
+    .then(res => res.json())
     .then(json => {
       const newToys = [...this.state.toys, json] 
       this.setState({
         toys: newToys 
-      }) 
+      })
     })
-  } 
+  }
 
-  increaseLikes=(toy)=> {
+  increaseLikes = (toy) => {
     fetch(`${baseUrl}/${toy.id}`, {
-      method: "PATCH", 
+      method: "PATCH",
       headers: {
-        "Content-Type": "application/json", 
+        "Content-Type": "application/json",
         Accept: "application/json"
       },
       body: JSON.stringify({
-        likes: toy.likes+1
+        likes: toy.likes + 1 
       })
     })
     .then(res => {
       const newToys = this.state.toys.map(checkToy => {
         const newToy = {...checkToy} 
         if (checkToy === toy) {
-          newToy.likes += 1 
+          newToy.likes += 1
         }
-        return newToy 
+        return newToy
       })
       this.setState({
         toys: newToys 
       })
     })
-  } 
+  }
 
-  donateToy=(id)=> {
+  donateToy = (id) => {
     fetch(`${baseUrl}/${id}`, {
       method: "DELETE"
     })
     .then(res => {
-      const newToys = this.state.toys.filter(toy => 
-        toy.id !== id
-      )
-      this.setState({toys: newToys}) 
+      const newToys = this.state.toys.filter(toy => toy.id !== id) 
+      this.setState({
+        toys: newToys
+      })
     })
   }
 
